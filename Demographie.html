@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Choropleth Population</title>
+	
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    <script src="js/leaflet-timeline-slider.js"></script>
+    <link href="css/leaflet-sidebar.css" rel="stylesheet">
+   
+
+        <link href="css/leaflet-sidebar.css" rel="stylesheet">
+        <link href="css/leaflet-sidebar.min.css" rel="stylesheet">
+        <script src="js/leaflet-sidebar.js"></script>
+        <script src="js/leaflet-sidebar.min.js"></script>
+
+        <script src="https://kit.fontawesome.com/d29293fced.js" crossorigin="anonymous"></script>
+    
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js" integrity="sha512-Lii3WMtgA0C0qmmkdCpsG0Gjr6M0ajRyQRQSbTF6BsrVh/nhZdHpVZ76iMIPvQwz1eoXC3DmAg9K51qT5/dEVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+        
+	</style>
+    <style>
+        .info {
+                    padding: 8px 10px;
+                    font: 14px/20px Arial, Helvetica, sans-serif;
+                    background: white;
+                    background: rgba(255,255,255,0.8);
+                    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                    border-radius: 5px;
+                }
+                .info h4 {
+                    margin: 0 0 5px;
+                    color: #777;
+                }
+        input[type=range] {
+                        -webkit-appearance: none;
+                        margin: 20px 0;
+                        width: 100%;
+                        }
+                        input[type=range]:focus {
+                        outline: none;
+                        }
+                        input[type=range]::-webkit-slider-runnable-track {
+                        width: 100%;
+                        height: 4px;
+                        cursor: pointer;
+                        background: #03a9f4;
+                        border-radius: 25px;
+                        }
+                        input[type=range]::-webkit-slider-thumb {
+                        height: 20px;
+                        width: 20px;
+                        border-radius: 50%;
+                        background: rgb(92, 13, 71);
+                        box-shadow: 0 0 4px 0 rgba(0,0,0, 1);
+                        cursor: pointer;
+                        -webkit-appearance: none;
+                        margin-top: -8px;
+                        }
+                        input[type=range]:focus::-webkit-slider-runnable-track {
+                        background: #03a9f4;
+                        }
+                        .range-wrap{
+                        width: 500px;
+                        position: relative;
+                        }
+                        .range-value{
+                        position: absolute;
+                        top: -50%;
+                        }
+                        .range-value span{
+                        width: 60px;
+                        height: 24px;
+                        line-height: 24px;
+                        text-align: center;
+                        background: #03a9f4;
+                        color: #fff;
+                        font-size: 12px;
+                        display: block;
+                        position: absolute;
+                        left: 50%;
+                        transform: translate(-50%, 0);
+                        border-radius: 6px;
+                        }
+                        .range-value span:before{
+                        content: "";
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        border-top: 10px solid #03a9f4;
+                        border-left: 5px solid transparent;
+                        border-right: 5px solid transparent;
+                        top: 100%;
+                        left: 50%;
+                        margin-left: -5px;
+                        margin-top: -1px;
+                        }
+                    </style>
+
+
+	<style>#map { width: 100%; height: 100vh; }
+.info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+.legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
+</head>
+<body>
+
+<div id='map'></div>
+
+<script type="text/javascript" src="Communes_PP.geojson"></script>
+
+<script type="text/javascript">
+
+	const map = L.map('map').setView([29.6332,-8.7067], 8);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+    	// control that shows state info on hover
+	const info = L.control();
+
+
+    
+
+// get color depending on population density value
+
+
+    function highlightFeature(e) {
+    const layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    layer.bringToFront();
+
+    info.update(layer.feature.properties);
+    }
+
+
+
+    function resetHighlight(e) {
+        geojson.resetStyle(e.target);
+        info.update();
+    }
+
+    function zoomToFeature(e) {
+        map.fitBounds(e.target.getBounds());
+    }
+
+    function onEachFeature(feature, layer) {
+        layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+    }
+
+    geojson = L.geoJSON(CommunesSM, {onEachFeature: onEachFeature, style: function(feature) {
+                    return {
+                            weight: 2,
+                            Opacity: 1,
+                            color: 'white',
+                            dasharray: '7',
+                            fillOpacity: 0.7,
+                            fillColor: getColor(feature.properties.P2014)
+                        }
+                }});
+                geojson.addTo(map);
+
+
+
+    const legend = L.control({position: 'bottomright'});
+
+    legend.onAdd = function (map) {
+
+        const div = L.DomUtil.create('div', 'info legend');
+        const grades = [0,5000, 10000, 50000, 100000, 200000,];
+        const labels = [];
+        let from, to;
+
+    for (let i = 0; i < grades.length; i++) {
+        from = grades[i];
+        to = grades[i + 1];
+
+        labels.push(`<i style="background:${getColor(from + 1)}"></i> ${from}${to ? `&ndash;${to}` : '+'}`);
+    }
+
+    div.innerHTML = labels.join('<br>');
+    return div;
+    };
+
+    legend.addTo(map);
+
+
+
+
+        var sidebar = L.control.sidebar({
+                    autopan: true,      
+                    closeButton: true,   
+                    container: 'sidebar', 
+                    position: 'left'
+                }).addTo(map);
+
+                sidebar.addPanel({
+                        id:   'info',
+                        tab:  '<i class="fa-solid fa-circle-info"></i>',
+                        title: 'Démographie',
+                        pane: 
+                        '<p style="margin-top: 20px; font-size: 15px; font-weight: bold">     Cette carte représente les projections démographiques de la Région Souss Massa, par provinces, préfectures et communes, pour la période (2015- 2030)'+
+                            '<p style="font-size: 16px;">Source de données :  Direction Régionale du HCP - Agadir </p>'+
+                            '<p style="font-size: 14px;">Lien : <a href="https://www.hcp.ma/region-agadir/">hcp.ma</a></p>'+
+                            
+
+
+                            '<hr style="margin-top: 50px; width: 375px;">'+
+                            '<p style="font-size: 14px;">Veuillez selectionner une année depuis le SlideBar  </p>'+
+                            '<div class="range-wrap" style="width: 375px;">'+
+                                '<label class="pull-left">Année</label>'+
+                                '<div class="range-value" id="rangeV"></div>'+
+                                '<input id="range" type="range" min="2014" max="2030" value="2014" step="1">'+
+                            '</div>'
+                        });
+                sidebar.open('info').addTo(map);
+
+    function getColor(P) {
+    return P < 5000   ? '#f2f0f7' :
+           P < 10000  ? '#dadaeb' :
+           P < 50000 ? '#bcbddc' :
+           P < 100000  ? '#9e9ac8' :
+           P < 200000  ? '#756bb1' :
+                  '#54278f';
+    }
+
+   var year = 2014;
+
+    $("#range").change(function() {
+                    year = $("#range").val();
+
+                map.removeLayer(geojson);
+                geojson = L.geoJSON(CommunesSM, {onEachFeature: onEachFeature, style: style});
+                map.addLayer(geojson);
+                });
+
+    function style(feature) {
+    return {
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 1,
+        fillColor: getColor(eval("feature.properties.P"+year))
+    };
+    }
+                
+        info.onAdd = function (map) {
+      this._div = L.DomUtil.create('div', 'info');
+      this.update();
+      return this._div;
+    };
+  
+    
+
+    info.update = function (props) {
+        const contents = props ? `<b> Commune ${props.RuraleUrba} :</b><b> ${props.Commune}</b><br /><b>Année ${year} : ${eval("props.P"+year)} habitant</b></sup>` : 'Appuyer sur une commune';
+        this._div.innerHTML = `<h4>Projection de la Population de Souss massa</h4>${contents}`;
+    };
+
+    info.addTo(map);
+
+
+
+                
+</script>
+
+<script>
+    const
+        range = document.getElementById('range'),
+        rangeV = document.getElementById('rangeV'),
+        setValue = ()=>{
+    const
+        newValue = Number( (range.value - range.min) * 100 / (range.max - range.min) ),
+        newPosition = 10 - (newValue * 0.2);
+        rangeV.innerHTML = `<span>${range.value}</span>`;
+        rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
+    };
+        
+    document.addEventListener("DOMContentLoaded", setValue);
+    range.addEventListener('input', setValue);
+</script>
+
+
+
+<script src="js/slick-slider.js"></script>
+
+</body>
+</html>
