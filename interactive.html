@@ -106,19 +106,19 @@ const info = L.control();
 		+"<center> <b> Musée du Patrimoine AMAZIGH </b>" 
         + '<br> <center> <b> Nationalité: </b>'
         + '<br> <center> <b> Date de réalisation: </b>' ) }
-		).addTo(map);
+		);
 	      const ClBra = L.marker([30.476880106542417, -8.872502090864593], {icon: L.AwesomeMarkers.icon({icon: 'picture', prefix: 'glyphicon', markerColor: 'orange', spin:false}) }).bindPopup(function (layer) {
         return ( "</b><br> <center> <img src='Interactive/images/CLBRA.jpg' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Musée Claudio BRAVO </b>" 
         + '<br> <center> <b> Le Palais Claudio Bravo est un lieu magique, encore baigné de la présence de Claudio Bravo, le grand peintre hyperréaliste qui l a construit. Depuis 1972, l artiste, d origine chilienne, avait fait du Maroc son lieu de vie et de créativité. </b>'
         + '<br> <center> <b> Réservation : Booking.com </b>' ) }
-		).addTo(map);
+		);
           const Tafraout = L.marker([29.76527888147166, -8.94279280518594], {icon: L.AwesomeMarkers.icon({icon: 'picture', prefix: 'glyphicon', markerColor: 'orange', spin:false}) }).bindPopup(function (layer) {
         return ( "</b><br> <center> <img src='Interactive/images/Tafraout.jpg' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Maison traditionnelle de TAFRAOUT </b>" 
         + '<br> <center> <b>  La Maison Traditionnelle Maison d Hôte propose des hébergements acceptant les animaux domestiques, un restaurant, une terrasse bien exposée et une connexion Wi-Fi gratuite. </b>'
         + '<br> <center> <b> Réservation: Booking.com / Airbnb.com. </b>' ) }
-		).addTo(map);
+		);
          
 	   const Musee = L.layerGroup([PatAM, ClBra, Tafraout]);
 
@@ -130,19 +130,19 @@ const info = L.control();
 		+"<center> <b> Port AGADIR</b>" 
         + '<br> <center> <b> Nationalité: </b>'
         + '<br> <center> <b> Date de réalisation: </b>' ) }
-		).addTo(map);
+		);
          const pImssouane = L.marker([30.84, -9.82], {icon: L.AwesomeMarkers.icon({icon: 'move', prefix: 'glyphicon', markerColor: 'blue', spin:false}) }).bindPopup(function (layer) {
         return ( "</b><br> <center> <img src= 'Interactive/images/Imsouane.webp' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Port IMSSOUANE </b>" 
         + '<br> <center> <b> Nationalité: </b>'
         + '<br> <center> <b> Date de réalisation: </b>' ) }
-		).addTo(map);
+		);
          const pMarina = L.marker([30.42, -9.62], {icon: L.AwesomeMarkers.icon({icon: 'move', prefix: 'glyphicon', markerColor: 'blue', spin:false}) }).bindPopup(function (layer) {
         return ( "</b><br> <center> <img src='Interactive/images/MarinaAgadir.jpg' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Port MARINA </b>" 
         + '<br> <center> <b> Nationalité: </b>'
         + '<br> <center> <b> Date de réalisation: </b>' ) }
-		).addTo(map);
+		);
 
       const ports = L.layerGroup([pagadir, pImssouane, pMarina]);
 
@@ -200,26 +200,26 @@ const info = L.control();
 		+"<center> <b> Parc National IRIQUI</b>" 
         + '<br> <center> <b> Le parc national d Iriqui fait partie des parcs nationaux du Maroc et s étend sur 123 000 hectares. </b>'
         + '<br> <center> <b> C est un parc saharien créé en 1994 pour les espèces désertiques </b>' ) }
-		).addTo(map);
+		);
 		 const AGZIFN = L.marker([29.993256677373967, -9.655457293289858], {icon: L.AwesomeMarkers.icon({icon: 'sign-blank', prefix: 'glyphicon', markerColor: 'green', spin:false}) }).bindPopup('Parc AGZIFN.');
 		 const Ecomusé = L.marker([30.058490325585492, -9.654718871987745], {icon: L.AwesomeMarkers.icon({icon: 'sign-blank', prefix: 'glyphicon', markerColor: 'green', spin:false}) }).bindPopup(function (layer) {
          return ( "</b><br> <center> <img src='Interactive/images/ecomuse.png' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Parc National de Souss - Ecomusée </b>" 
         + '<br> <center> <b> Le Parc national de Souss-Massa s’étend sur une superficie de 33 800 ha. </b>'
         + '<br> <center> <b> le Parc national de Souss-Massa a connu un zonage d aménagement qui tient compte des différentes vocations des espaces, des contraintes socio-économiques </b>' ) }
-		).addTo(map);
+		);
 		 const CROCPARK = L.marker([30.39412070467774, -9.484023026261823], {icon: L.AwesomeMarkers.icon({icon: 'sign-blank', prefix: 'glyphicon', markerColor: 'green', spin:false}) }).bindPopup(function (layer) {
          return ( "</b><br> <center> <img src='Interactive/images/croc-parc.jpg' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Crocoparc Agadir Jardin botanique et parc animalier</b>" 
         + '<br> <center> <b>Crocoparc Agadir est le premier parc zoologique de crocodiles au Maroc, ouvert en mai 2015 dans la banlieue d Agadir. </b>'
         + '<br> <center> <b> Il abrite 325 crocodiles du Nil au sein d un jardin botanique s étendant sur environ 4 hectares. </b>' ) }
-		).addTo(map);
+		);
 		 const CLIMBING = L.marker([30.370455473958078, -9.568262771650074], {icon: L.AwesomeMarkers.icon({icon: 'sign-blank', prefix: 'glyphicon', markerColor: 'green', spin:false}) }).bindPopup(function (layer) {
          return ( "</b><br> <center> <img src='Interactive/images/climbingparc.jpg' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Climbing Parc AGADIR</b>" 
         + '<br> <center> <b> L’accrobranche d’Agadir également appelé Souss Park est un complexe de 2 hectares proposant des activités sportives et ludiques aux enfants ainsi qu’aux adultes. </b>'
         + '<br> <center> <b> Ce parc installé au milieux d’une forêt d’eucalyptus est accessible à tous les niveaux, des amateurs aux plus sportifs. </b>' ) }
-		).addTo(map);
+		);
 		 const GreenP = L.marker([30.3191262277756, -9.16939849308906], {icon: L.AwesomeMarkers.icon({icon: 'sign-blank', prefix: 'glyphicon', markerColor: 'green', spin:false}) }).bindPopup('GREEN PARK HOUARA.');
       const Parcs = L.layerGroup([IRIQUI, AGZIFN, Ecomusé, CROCPARK, CLIMBING, GreenP ]);
 
@@ -228,7 +228,7 @@ const info = L.control();
 	layerControl.addBaseLayer(satellite, 'Satellite');
     
 	layerControl.addOverlay(Musee, 'Musées');
-    layerControl.addOverlay(ports, 'Ports de pêche');
+        layerControl.addOverlay(ports, 'Ports de pêche');
 	layerControl.addOverlay(Enseignement, 'Enseignement');
 	layerControl.addOverlay(ANCFCC, 'ANCFCC');
 	layerControl.addOverlay(Parcs, 'Parcs');
