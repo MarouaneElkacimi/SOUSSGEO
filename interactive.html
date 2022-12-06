@@ -237,18 +237,18 @@ const info = L.control();
 
 	const geojson1 = L.geoJson(RoutesP, {
       fillOpacity: 0.8,
-	  color: "#f0f0f0",
+	  color: "#F43A0D",
 	  radius: 2,
 	})
 	
 	const geojson2 = L.geoJson(RoutesS, {
       fillOpacity: 0.8,
-	  color: "#bdbdbd",
+	  color: "#f4a30d",
 	})
 	
 	const geojson3 = L.geoJson(RoutesT, {
       fillOpacity: 0.8,
-	  color: "#636363",
+	  color: "#f0e40a",
 	})
 
 	const geojson4 = L.geoJson(Poly, {
@@ -256,9 +256,9 @@ const info = L.control();
 	  color: "#31a354",
 	})
 	
-    layerControl.addOverlay(geojson1, 'RoutesPrimaires');
-	layerControl.addOverlay(geojson2, 'RoutesSecondaires');
-	layerControl.addOverlay(geojson3, 'RoutesTertiaires');
+    layerControl.addOverlay(geojson1, 'Routes Nationales');
+	layerControl.addOverlay(geojson2, 'Routes Régionales');
+	layerControl.addOverlay(geojson3, 'Routes Provinciales');
 	layerControl.addOverlay(geojson4, 'Natural');
 
 L.layerJSON({url: "search.php?lat1={lat1}&lat2={lat2}&lon1={lon1}&lon2={lon2}" }).addTo(map);
