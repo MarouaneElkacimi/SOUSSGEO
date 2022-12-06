@@ -65,12 +65,12 @@ const info = L.control();
 
 	const cities = L.layerGroup();
 
-	const mAgadir = L.marker([30.644458726905459, -9.537289183504909], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Préfecture Agadir Ida-Outanane,').addTo(cities);
-	const mInzegane = L.marker([30.337345935164834, -9.456570305311878 ], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Préfecture Inezgane-Aït Melloul,').addTo(cities);
-	const mChtouka = L.marker([30.032587862781302, -9.302349142758768], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Province de Chtouka Aït Baha,').addTo(cities);
-	const mTaroudant = L.marker([30.455666448868442, -8.423668525034769], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Province de Taroudant,').addTo(cities);
-    const mTata = L.marker([ 29.569401268247208, -7.841429437525087], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Province de Tata,').addTo(cities);
-    const mTiznit = L.marker([29.626752631102431 , -9.342359532152955], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Province de Tiznit,').addTo(cities);
+	const mAgadir = L.marker([30.644458726905459, -9.537289183504909], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'gray', spin:false}) }).bindPopup('Préfecture Agadir Ida-Outanane,').addTo(cities);
+	const mInzegane = L.marker([30.337345935164834, -9.456570305311878 ], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'gray', spin:false}) }).bindPopup('Préfecture Inezgane-Aït Melloul,').addTo(cities);
+	const mChtouka = L.marker([30.032587862781302, -9.302349142758768], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'gray', spin:false}) }).bindPopup('Province de Chtouka Aït Baha,').addTo(cities);
+	const mTaroudant = L.marker([30.455666448868442, -8.423668525034769], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'gray', spin:false}) }).bindPopup('Province de Taroudant,').addTo(cities);
+    const mTata = L.marker([ 29.569401268247208, -7.841429437525087], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'gray', spin:false}) }).bindPopup('Province de Tata,').addTo(cities);
+    const mTiznit = L.marker([29.626752631102431 , -9.342359532152955], {icon: L.AwesomeMarkers.icon({icon: 'flag', prefix: 'glyphicon', markerColor: 'gray', spin:false}) }).bindPopup('Province de Tiznit,').addTo(cities);
   
 		const mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
 	const mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
@@ -89,7 +89,7 @@ const info = L.control();
 	});
 
 	const baseLayers = {
-		'OpenStreetMap': Esri,
+		'Esri Topo': Esri,
 		
 	};
 
@@ -101,19 +101,19 @@ const info = L.control();
 	
 	const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 
-	      const PatAM = L.marker([30.416041481748632, -9.596996959925129], {icon: L.AwesomeMarkers.icon({icon: 'picture', prefix: 'glyphicon', markerColor: 'green', spin:false}) }).bindPopup(function (layer) {
+	      const PatAM = L.marker([30.416041481748632, -9.596996959925129], {icon: L.AwesomeMarkers.icon({icon: 'picture', prefix: 'glyphicon', markerColor: 'orange', spin:false}) }).bindPopup(function (layer) {
         return ( "</b><br> <center> <img src='Interactive/images/PatrimoineAmazigh.jpg' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Musée du Patrimoine AMAZIGH </b>" 
         + '<br> <center> <b> Nationalité: </b>'
         + '<br> <center> <b> Date de réalisation: </b>' ) }
 		).addTo(map);
-	      const ClBra = L.marker([30.476880106542417, -8.872502090864593], {icon: L.AwesomeMarkers.icon({icon: 'picture', prefix: 'glyphicon', markerColor: 'green', spin:false}) }).bindPopup(function (layer) {
+	      const ClBra = L.marker([30.476880106542417, -8.872502090864593], {icon: L.AwesomeMarkers.icon({icon: 'picture', prefix: 'glyphicon', markerColor: 'orange', spin:false}) }).bindPopup(function (layer) {
         return ( "</b><br> <center> <img src='Interactive/images/CLBRA.jpg' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Musée Claudio BRAVO </b>" 
         + '<br> <center> <b> Le Palais Claudio Bravo est un lieu magique, encore baigné de la présence de Claudio Bravo, le grand peintre hyperréaliste qui l a construit. Depuis 1972, l artiste, d origine chilienne, avait fait du Maroc son lieu de vie et de créativité. </b>'
         + '<br> <center> <b> Réservation : Booking.com </b>' ) }
 		).addTo(map);
-          const Tafraout = L.marker([29.76527888147166, -8.94279280518594], {icon: L.AwesomeMarkers.icon({icon: 'picture', prefix: 'glyphicon', markerColor: 'green', spin:false}) }).bindPopup(function (layer) {
+          const Tafraout = L.marker([29.76527888147166, -8.94279280518594], {icon: L.AwesomeMarkers.icon({icon: 'picture', prefix: 'glyphicon', markerColor: 'orange', spin:false}) }).bindPopup(function (layer) {
         return ( "</b><br> <center> <img src='Interactive/images/Tafraout.jpg' style='width:200px;height:300x;'></center>"
 		+"<center> <b> Maison traditionnelle de TAFRAOUT </b>" 
         + '<br> <center> <b>  La Maison Traditionnelle Maison d Hôte propose des hébergements acceptant les animaux domestiques, un restaurant, une terrasse bien exposée et une connexion Wi-Fi gratuite. </b>'
@@ -188,11 +188,11 @@ const info = L.control();
 
 
 
-	     const ANCFCCA = L.marker([30.472207425468635, -9.60955694267397], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Agence nationale de la conservation foncière du cadastre et de la cartographie d Agadir.');
-         const ANCFCCI = L.marker([30.424851699051327, -9.54363897927784], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Agence Nationale de la Conservation Foncière du cadastre et de la cartographie Inzegane Ait Melloul.');
-         const ANCFCCT = L.marker([29.75528705730901, -9.730968566803714], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Agence Nationale de la Conservation Foncière du cadastre et de la cartographie TIZNIT.');
-		 const ANCFCCTA = L.marker([30.47590582249661, -8.86542991027378], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Agence Nationale de la Conservation Foncière du cadastre et de la cartographie TAROUDANT.');
-		 const ANCFCCC = L.marker([30.319840515732004, -9.395288739215978], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'red', spin:false}) }).bindPopup('Agence Nationale de la Conservation Foncière du cadastre et de la cartographie CHTOUKA AIT BAHA.');
+	     const ANCFCCA = L.marker([30.472207425468635, -9.60955694267397], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'purple', spin:false}) }).bindPopup('Agence nationale de la conservation foncière du cadastre et de la cartographie d Agadir.');
+         const ANCFCCI = L.marker([30.424851699051327, -9.54363897927784], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'purple', spin:false}) }).bindPopup('Agence Nationale de la Conservation Foncière du cadastre et de la cartographie Inzegane Ait Melloul.');
+         const ANCFCCT = L.marker([29.75528705730901, -9.730968566803714], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'purple', spin:false}) }).bindPopup('Agence Nationale de la Conservation Foncière du cadastre et de la cartographie TIZNIT.');
+		 const ANCFCCTA = L.marker([30.47590582249661, -8.86542991027378], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'purple', spin:false}) }).bindPopup('Agence Nationale de la Conservation Foncière du cadastre et de la cartographie TAROUDANT.');
+		 const ANCFCCC = L.marker([30.319840515732004, -9.395288739215978], {icon: L.AwesomeMarkers.icon({icon: 'font', prefix: 'glyphicon', markerColor: 'purple', spin:false}) }).bindPopup('Agence Nationale de la Conservation Foncière du cadastre et de la cartographie CHTOUKA AIT BAHA.');
       const ANCFCC = L.layerGroup([ANCFCCA, ANCFCCI, ANCFCCT, ANCFCCTA]);
 
 	  const IRIQUI = L.marker([29.841885740569435, -6.516469731346426], {icon: L.AwesomeMarkers.icon({icon: 'sign-blank', prefix: 'glyphicon', markerColor: 'green', spin:false}) }).bindPopup(function (layer) {
