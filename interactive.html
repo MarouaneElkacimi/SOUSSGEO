@@ -74,19 +74,19 @@ const info = L.control();
 	const mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
 	const mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
 
-	const osm = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+	const Esri_Topo = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
 		maxZoom: 19,
-		attribution: '&copy; <a href="https://www.esri.com/en-us/home">Esri</a>'
+		attribution: '&copy; <a href="https://www.esri.com/en-us/home">Powered by Esri</a>'
 	});
 
 	const map = L.map('map', {
 		center: [29.6332,-8.7067],
 		zoom: 8,
-		layers: [osm, cities]
+		layers: [Esri_Topo, cities]
 	});
 
 	const baseLayers = {
-		'OpenStreetMap': osm,
+		'Esri Topo': Esri Topo,
 		
 	};
 
